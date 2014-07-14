@@ -1,0 +1,1 @@
+Demo project for using Camera Activity
