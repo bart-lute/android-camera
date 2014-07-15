@@ -14,6 +14,8 @@ import java.util.Date;
  */
 public class CameraHelper {
 
+    public static final String TAG = "CameraHelper";
+
     public static final int MEDIA_TYPE_IMAGE = 1;
     public static final int MEDIA_TYPE_VIDEO = 2;
 
@@ -22,6 +24,12 @@ public class CameraHelper {
     }
 
     private static File getOutputMediaFile(int type) {
+
+        Log.d("AndroidCamera", Environment.getExternalStorageState());
+        if (!Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
+            Log.d(TAG, "External Storage not mounted");
+            return null;
+        }
 
         File mediaStorageDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "AndroidCamera");
 
